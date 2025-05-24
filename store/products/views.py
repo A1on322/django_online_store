@@ -11,3 +11,6 @@ class ProductHome(ListView):
 
     def get_queryset(self):
         return {'data':' Hello '}
+
+def products(request):
+    return render(request, 'products/products.html')
