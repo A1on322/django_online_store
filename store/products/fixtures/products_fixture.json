@@ -1,0 +1,202 @@
+[
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Korean Ginseng Capsules",
+      "description": "Natural energy booster and immune support.",
+      "price": "19.99",
+      "quantity": 50,
+      "category": 1
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Vitamin C Serum",
+      "description": "Promotes skin brightness and collagen production.",
+      "price": "12.49",
+      "quantity": 100,
+      "category": 1
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Detox Herbal Tea",
+      "description": "Supports digestion and overall wellness.",
+      "price": "8.90",
+      "quantity": 75,
+      "category": 1
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Sleep Aid Patches",
+      "description": "Natural lavender-infused sleep patches.",
+      "price": "9.99",
+      "quantity": 40,
+      "category": 1
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Snail Repair Cream",
+      "description": "Hydrating cream with snail mucin for damaged skin.",
+      "price": "15.90",
+      "quantity": 60,
+      "category": 2
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "BB Cream SPF 50",
+      "description": "Multifunctional base cream with sun protection.",
+      "price": "11.50",
+      "quantity": 90,
+      "category": 2
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Green Tea Cleansing Foam",
+      "description": "Gentle face wash with green tea extract.",
+      "price": "7.80",
+      "quantity": 120,
+      "category": 2
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Hydrogel Eye Patches",
+      "description": "Reduces puffiness and dark circles.",
+      "price": "10.00",
+      "quantity": 70,
+      "category": 2
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Hot Chicken Ramen",
+      "description": "Spicy instant noodles – Korea’s favorite!",
+      "price": "3.50",
+      "quantity": 200,
+      "category": 3
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Pepero Chocolate Sticks",
+      "description": "Crunchy biscuit sticks coated in chocolate.",
+      "price": "2.80",
+      "quantity": 300,
+      "category": 3
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Honey Butter Chips",
+      "description": "Sweet and salty Korean-style potato chips.",
+      "price": "3.20",
+      "quantity": 150,
+      "category": 3
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Roasted Seaweed Snacks",
+      "description": "Crispy seaweed sheets with sesame oil flavor.",
+      "price": "1.90",
+      "quantity": 250,
+      "category": 3
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Korean Ceramic Tea Set",
+      "description": "Traditional handcrafted teapot and cup set.",
+      "price": "29.99",
+      "quantity": 20,
+      "category": 4
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Mini Hanbok Keychain",
+      "description": "Cute traditional costume keyring.",
+      "price": "4.50",
+      "quantity": 100,
+      "category": 4
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Korean Calligraphy Notebook",
+      "description": "Elegant notebook with traditional Korean design.",
+      "price": "6.70",
+      "quantity": 80,
+      "category": 4
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Scented Candle – Jeju Citrus",
+      "description": "Soy candle with refreshing citrus aroma.",
+      "price": "12.00",
+      "quantity": 50,
+      "category": 4
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "BTS Official Lightstick (ARMY Bomb)",
+      "description": "Official concert lightstick with Bluetooth sync.",
+      "price": "49.90",
+      "quantity": 30,
+      "category": 5
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "Stray Kids Photocard Set",
+      "description": "Exclusive photo cards of the full group.",
+      "price": "9.90",
+      "quantity": 70,
+      "category": 5
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "BLACKPINK Hoodie",
+      "description": "Oversized hoodie with BLACKPINK logo.",
+      "price": "34.99",
+      "quantity": 40,
+      "category": 5
+    }
+  },
+  {
+    "model": "products.Product",
+    "fields": {
+      "name": "TXT Poster – The Name Chapter",
+      "description": "High-quality A2 poster of the latest comeback.",
+      "price": "6.90",
+      "quantity": 60,
+      "category": 5
+    }
+  }
+]

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +12,11 @@
     <title>{{title}}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static  'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/vendor/css/index.css" rel="stylesheet">
+    {% block css %}
+    {% endblock %}
 
 </head>
 
@@ -98,13 +101,13 @@
 <!-- Конец footer'а и страницы -->
 
 <!-- Bootstrap core JavaScript -->
-<script src="/static/vendor/jquery/jquery.min.js"></script>
-<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-q6LZw6xw+2NRRDKcZqqed4AsX93E9u/1pFCUtWj5Zz/v6z4uFkF7w1xUrx4k0UGB"
         crossorigin="anonymous"></script>
 
 <!-- FontAwesome script -->
-<script src="/static/vendor/fontawesome/fontawesome-icons.js" crossorigin="anonymous"></script>
+<script src="{% static 'vendor/fontawesome/fontawesome-icons.js' %}" crossorigin="anonymous"></script>
 </body>
 </html>

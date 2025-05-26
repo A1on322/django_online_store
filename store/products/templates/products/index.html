@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+	    <link href="{% static 'vendor/css/index.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 <!-- Page Content -->
@@ -15,7 +20,7 @@
                     All in one place, delivered to your doorstep.
                 </p>
                 <button id="start-purchase-btn" type="button" class="btn btn-lg">
-                    <a id="start-purchase-link" href="products.html">
+                    <a id="start-purchase-link" href="{% url 'products' %}">
                         Start shopping
                     </a>
                 </button>

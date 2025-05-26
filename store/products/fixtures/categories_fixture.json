@@ -1,0 +1,42 @@
+[
+  {
+    "model": "products.ProductCategory",
+    "pk": 1,
+    "fields": {
+      "name": "Health",
+      "description": "Products promoting physical and mental well-being."
+    }
+  },
+  {
+    "model": "products.ProductCategory",
+    "pk": 2,
+    "fields": {
+      "name": "Cosmetology",
+      "description": "Skincare and beauty products for all skin types."
+    }
+  },
+  {
+    "model": "products.ProductCategory",
+    "pk": 3,
+    "fields": {
+      "name": "Food/Snacks",
+      "description": "Delicious Korean snacks and food items."
+    }
+  },
+  {
+    "model": "products.ProductCategory",
+    "pk": 4,
+    "fields": {
+      "name": "Gifts",
+      "description": "Perfect Korean gifts and souvenirs."
+    }
+  },
+  {
+    "model": "products.ProductCategory",
+    "pk": 5,
+    "fields": {
+      "name": "K-pop/merch",
+      "description": "Merchandise and collectibles from your favorite K-pop artists."
+    }
+  }
+]
