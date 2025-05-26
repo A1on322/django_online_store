@@ -1,16 +1,23 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
+from products.models import Product
+
 
 # Create your views here.
 
 class ProductHome(ListView):
     template_name = "products/index.html"
-    context_object_name = "products"
-    title_page = "Home"
+    title = "Home"
 
     def get_queryset(self):
         return {'data':' Hello '}
 
-def products(request):
-    return render(request, 'products/products.html')
+
+
+class ProductsView(ListView):
+    template_name = "products/products.html"
+    context_object_name = "products"
+
+    def get_queryset(self):
+        return Product.objects.all()
