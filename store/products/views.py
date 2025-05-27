@@ -8,7 +8,7 @@ from products.models import Product
 
 class ProductHome(ListView):
     template_name = "products/index.html"
-    title = "Home"
+    extra_context = {'title': 'Home'}
 
     def get_queryset(self):
         return {'data':' Hello '}
@@ -18,6 +18,7 @@ class ProductHome(ListView):
 class ProductsView(ListView):
     template_name = "products/products.html"
     context_object_name = "products"
+    extra_context = {'title': 'Products'}
 
     def get_queryset(self):
         return Product.objects.all()
