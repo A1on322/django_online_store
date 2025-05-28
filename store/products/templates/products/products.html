@@ -41,7 +41,7 @@
                             <p class="card-text">{{ p.description }}</p>
                         </div>
                         <div class="card-footer text-center">
-                            <button type="button" class="btn btn-outline-success">Add to cart</button>
+                            <a href="{% url 'products:cart_add' p.id %}" class="btn btn-outline-success">Add to cart</a>
                         </div>
                     </div>
                 </div>
