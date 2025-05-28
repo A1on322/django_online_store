@@ -1,80 +1,122 @@
-{% extends 'users/base.html' %}
-{% block content %}
-        <main>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert"
-                             style="margin-top: 50px;">
-                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="card shadow-lg border-0 rounded-lg mt-5">
-                            <div class="card-header"><h3 class="text-center font-weight-light my-4">Create account</h3>
+    {% extends 'users/base.html' %}
+    {% block content %}
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert"
+                                 style="margin-top: 50px;">
+                                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputFirstName">Name</label>
-                                                <input class="form-control py-4" id="inputFirstName" type="text"
-                                                       placeholder="Enter name"/>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputLastName">Surname</label>
-                                                <input class="form-control py-4" id="inputLastName" type="text"
-                                                       placeholder="Enter surname"/>
-                                            </div>
-                                        </div>
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Create account</h3>
+                                </div>
+                                <div class="card-body">
+                                    {% if form.non_field_errors %}
+                                    <div class="alert alert-danger">
+                                    {% for error in form.non_field_errors %}
+                                         <p>{{ error }}</p>
+                                    {% endfor %}
                                     </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputUsername">Username</label>
-                                            <input class="form-control py-4" id="inputUsername" type="text"
-                                                   aria-describedby="usernameHelp"
-                                                   placeholder="Enter username"/>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="small mb-1" for="inputEmailAddress">E-mail address</label>
-                                            <input class="form-control py-4" id="inputEmailAddress" type="email"
-                                                   aria-describedby="emailHelp"
-                                                   placeholder="Enter e-mail address"/>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" type="password"
-                                                       placeholder="Enter password"/>
+                                    {% endif %}
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="{{ form.first_name.id_for_label }}">
+                                                        Name
+                                                    </label>
+                                                    {{ form.first_name }}
+                                                    {% if form.first_name.errors %}
+                                                        <div class="text-danger small">
+                                                            {{ form.first_name.errors }}
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="{{ form.last_name.id_for_label }}">
+                                                        Surname
+                                                    </label>
+                                                    {{ form.last_name }}
+                                                    {% if form.last_name.errors %}
+                                                        <div class="text-danger small">
+                                                            {{ form.last_name.errors }}
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputConfirmPassword">Password
-                                                    confirmation
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="{{ form.username.id_for_label }}">
+                                                    Username
                                                 </label>
-                                                <input class="form-control py-4" id="inputConfirmPassword"
-                                                       type="password" placeholder="Repeat your password"/>
+                                                {{ form.username }}
+                                                {% if form.username.errors %}
+                                                    <div class="text-danger small">
+                                                        {{ form.username.errors }}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="small mb-1" for="{{ form.email.id_for_label }}">
+                                                    E-mail address
+                                                </label>
+                                                {{ form.email }}
+                                                {% if form.email.errors %}
+                                                    <div class="text-danger small">
+                                                        {{ form.email.errors }}
+                                                    </div>
+                                                {% endif %}
                                             </div>
                                         </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="{{ form.password1.id_for_label }}">
+                                                        Password
+                                                    </label>
+                                                    {{ form.password1 }}
+                                                    {% if form.password1.errors %}
+                                                    <div class="text-danger small">
+                                                        {{ form.password1.errors }}
+                                                    </div>
+                                                {% endif %}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="small mb-1" for="{{ form.password2.id_for_label }}">
+                                                        Password confirmation
+                                                    </label>
+                                                    {{ form.password2 }}
+                                                    {% if form.password2.errors %}
+                                                    <div class="text-danger small">
+                                                        {{ form.password2.errors }}
+                                                    </div>
+                                                {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-4 mb-0">
+                                            <input class="btn btn-primary btn-block" type="submit" value="Register">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <div class="small">
+                                        <a href={% url 'users:login' %}>Already have one? Log in now!</a>
                                     </div>
-                                    <div class="form-group mt-4 mb-0">
-                                        <input class="btn btn-primary btn-block" type="submit" value="Register">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-footer text-center">
-                                <div class="small"><a href={% url 'users:login' %}>Already have one? Log in now!</a></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-{% endblock %}
+            </main>
+    {% endblock %}
