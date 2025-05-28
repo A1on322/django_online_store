@@ -37,3 +37,20 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
+
+
+class ProfileUserForm(forms.ModelForm):
+    first_name = forms.CharField(label="First Name",
+                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(label="Last Name",
+                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+    image = forms.ImageField(label="Image",
+                             widget=forms.FileInput(attrs={'class': 'form-control'}))
+    username = forms.CharField(label="Username",
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': True, 'disabled': True}))
+    email = forms.EmailField(label="Email",
+                             widget=forms.EmailInput(attrs={'class': 'form-control', 'readonly': True, 'disabled': True}))
+
+    class Meta:
+        model = get_user_model()
+        fields = ('first_name', 'last_name', 'image', 'username', 'email')
