@@ -138,3 +138,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #Users
 
 AUTH_USER_MODEL = "users.User"
+
+DEFAULT_USER_IMAGE = MEDIA_URL + "users_images/default.png"
