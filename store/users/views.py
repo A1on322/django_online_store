@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth import get_user, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
@@ -24,6 +25,11 @@ class RegisterUserView(CreateView):
     template_name = 'users/register.html'
     extra_context = {'title': 'Registration'}
     success_url = reverse_lazy('users:login')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "You have successfully registered! Please log in.")
+        return response
 
 class ProfileUserView(LoginRequiredMixin, UpdateView):
     model = get_user_model()
