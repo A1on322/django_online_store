@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
+from products.models import Cart
 from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm
 
 
@@ -45,3 +46,8 @@ class ProfileUserView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cart'] = Cart.objects.filter(user=self.request.user)
+        return context
