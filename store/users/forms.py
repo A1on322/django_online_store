@@ -42,14 +42,15 @@ class RegisterUserForm(UserCreationForm):
 class ProfileUserForm(forms.ModelForm):
     first_name = forms.CharField(label="First Name",
                                  widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(label="Last Name",
+    last_name = forms.CharField(label="Last Name", required=False,
                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
     image = forms.ImageField(label="Image",
-                             widget=forms.FileInput(attrs={'class': 'form-control'}))
+                             widget=forms.FileInput(attrs={'class': 'form-control'}),
+                             required=False)
     username = forms.CharField(label="Username",
-                               widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': True, 'disabled': True}))
-    email = forms.EmailField(label="Email",
-                             widget=forms.EmailInput(attrs={'class': 'form-control', 'readonly': True, 'disabled': True}))
+                               widget=forms.TextInput(attrs={'class': 'form-control', 'readonly': True}))
+    email = forms.EmailField(label="Email", required=False,
+                             widget=forms.EmailInput(attrs={'class': 'form-control', 'readonly': True}))
 
     class Meta:
         model = get_user_model()
