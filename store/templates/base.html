@@ -50,9 +50,11 @@
                             <li>
                                 <a class="dropdown-item" href="#">Orders</a>
                             </li>
+                            {% if user.is_superuser or user.is_staff %}
                             <li>
-                                <a class="dropdown-item" href="#">Admin-panel</a>
+                                <a class="dropdown-item" href="{% url 'admin:index' %}">Admin-panel</a>
                             </li>
+                            {% endif %}
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
