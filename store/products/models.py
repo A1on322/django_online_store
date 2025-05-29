@@ -1,6 +1,14 @@
 from django.db import models
 from users.models import User
 
+
+class CustomManager(models.QuerySet):
+    def get_total_price(self):
+        return sum(item.get_sum() for item in self)
+
+    def get_quantity(self):
+        return sum(item.quantity for item in self)
+
 # Create your models here.
 class ProductCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -35,5 +43,10 @@ class Cart(models.Model):
     quantity = models.PositiveIntegerField(default=0)
     created_timestamp = models.DateTimeField(auto_now_add=True)
 
+    objects = CustomManager().as_manager()
+
     def __str__(self):
         return f'{self.user.username} - {self.product.name}'
+
+    def get_sum(self):
+        return self.quantity * self.product.price
