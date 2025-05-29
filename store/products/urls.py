@@ -2,16 +2,15 @@ from unicodedata import category
 
 from django.urls import path
 
-from products import views
-from products.views import cart_add, cart_remove, ProductCategoryView
+from products.views import cart_add, cart_remove, ProductsView
 
 app_name = 'products'
 
 urlpatterns = [
-    path("", views.ProductsView.as_view(), name="index"),
+    path("", ProductsView.as_view(), name="index"),
     path('cart/add/<int:product_id>/', cart_add, name='cart_add' ),
     path('cart/remove/<int:cart_id>/', cart_remove, name='cart_remove'),
-    path('category/<int:cat_id>/', ProductCategoryView.as_view(), name='category')
+    path('category/<int:cat_id>/', ProductsView.as_view(), name='category')
 
 
 ]
