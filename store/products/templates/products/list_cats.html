@@ -1,3 +1,4 @@
 {% for cat in cats %}
-<a href="{{ cat.get_absolute_url }}" class="list-group-item">{{cat.name}}</a>
+<a href="{% url 'products:category' cat.id %}"
+   class="list-group-item{% if cat.id == cat_selected %} active {% endif %}">{{cat.name}}</a>
 {% endfor %}

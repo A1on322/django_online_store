@@ -13,7 +13,9 @@
 
         <div class="col-lg-3">
 
-            <h1 class="my-4">Categories</h1>
+            <h1 class="my-4">
+                <a href="{% url 'products:index' %}" class="text-decoration-none text-dark"><i class="fas fa-list"></i> </i> Categories</a>
+            </h1>
             <div class="list-group">
                 {% show_categories %}
             </div>
@@ -41,7 +43,7 @@
                             <p class="card-text">{{ p.description }}</p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="{% url 'products:cart_add' p.id %}" class="btn btn-outline-success">Add to cart</a>
+                            <a href="{% url 'products:cart_add' p.id %}" class="btn btn-outline-success">Add to cart <i class="fas fa-cart-plus"></i></a>
                         </div>
                     </div>
                 </div>
