@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 
 from products.models import Product, Cart, ProductCategory
+from products.utils import DataMixxin
 
 
 # Create your views here.
@@ -13,14 +14,15 @@ class ProductHome(ListView):
     extra_context = {'title': 'Home'}
 
     def get_queryset(self):
-        return {'data':' Hello '}
+        return
 
 
 
-class ProductsView(ListView):
+class ProductsView(DataMixxin, ListView):
     template_name = "products/products.html"
     context_object_name = "products"
     extra_context = {'title': 'Products'}
+    paginate_by = 6
 
 
     def get_queryset(self):
@@ -47,7 +49,7 @@ def cart_remove(request, cart_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-class ProductCategoryView(ListView):
+class ProductCategoryView(DataMixxin, ListView):
     model = Product
     template_name = 'products/products.html'
     context_object_name = 'products'
