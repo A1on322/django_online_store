@@ -1,8 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from products.models import Product, Cart
+from products.models import Product, Cart, ProductCategory
 
 
 # Create your views here.
@@ -21,9 +22,11 @@ class ProductsView(ListView):
     context_object_name = "products"
     extra_context = {'title': 'Products'}
 
+
     def get_queryset(self):
         return Product.objects.all()
 
+@login_required
 def cart_add(request, product_id):
     product = Product.objects.get(id=product_id)
     cart = Cart.objects.filter(user_id=request.user.id, product = product)
@@ -37,7 +40,22 @@ def cart_add(request, product_id):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+@login_required
 def cart_remove(request, cart_id):
     cart = Cart.objects.get(id=cart_id)
     cart.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class ProductCategoryView(ListView):
+    model = Product
+    template_name = 'products/products.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        return Product.objects.filter(category_id = self.kwargs['cat_id'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['cat_selected'] = self.kwargs['cat_id']
+        return context
