@@ -148,3 +148,9 @@ DEFAULT_USER_IMAGE = MEDIA_URL + "users_images/default.png"
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'Your App <noreply@example.com>'
 EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+
+#Authentication backend
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.EmailAuthBackend',
+]
