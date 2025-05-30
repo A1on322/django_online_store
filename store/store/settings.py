@@ -131,6 +131,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+#Redirects
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'users:login'
@@ -142,3 +143,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "users.User"
 
 DEFAULT_USER_IMAGE = MEDIA_URL + "users_images/default.png"
+
+#Email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Your App <noreply@example.com>'
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
