@@ -177,3 +177,8 @@ cython_debug/
 .idea/
 store/.idea/
 .DS_Store
+
+
+#lint configuration
+pyproject.toml
+store/Makefile

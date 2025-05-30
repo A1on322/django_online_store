@@ -9,6 +9,7 @@ class CustomManager(models.QuerySet):
     def get_quantity(self):
         return sum(item.quantity for item in self)
 
+
 # Create your models here.
 class ProductCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -21,12 +22,13 @@ class ProductCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 class Product(models.Model):
     name = models.CharField(max_length=256, unique=True)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.PositiveIntegerField(default=0)
-    image = models.ImageField(upload_to='products_images', null=True, blank=True)
+    image = models.ImageField(upload_to="products_images", null=True, blank=True)
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT)
 
     class Meta:
@@ -46,7 +48,7 @@ class Cart(models.Model):
     objects = CustomManager().as_manager()
 
     def __str__(self):
-        return f'{self.user.username} - {self.product.name}'
+        return f"{self.user.username} - {self.product.name}"
 
     def get_sum(self):
         return self.quantity * self.product.price
