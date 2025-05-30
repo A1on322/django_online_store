@@ -1,9 +1,9 @@
+
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 
-from products.models import Product, Cart, ProductCategory
+from products.models import Product, Cart
 from products.utils import DataMixxin
 
 
