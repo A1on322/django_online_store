@@ -182,3 +182,4 @@ store/.idea/
 #lint configuration
 pyproject.toml
 store/Makefile
+.flake8
