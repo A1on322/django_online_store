@@ -64,3 +64,4 @@ class CustomPasswordResetConfirmView(SuccessMessageMixin, PasswordResetConfirmVi
     success_url = reverse_lazy("users:login")
     success_message = "You have successfully reset your password!\nPlease log in."
     form_class = CustomSetPasswordForm
+    title = "Password reset"
