@@ -1,4 +1,8 @@
-{% for cat in cats %}
-<a href="{% url 'products:category' cat.id %}"
-   class="list-group-item{% if cat.id == cat_selected %} active {% endif %}">{{cat.name}}</a>
-{% endfor %}
+{% load cache %}
+
+{% cache 30 cats %}
+    {% for cat in cats %}
+    <a href="{% url 'products:category' cat.id %}"
+       class="list-group-item{% if cat.id == cat_selected %} active {% endif %}">{{cat.name}}</a>
+    {% endfor %}
+{% endcache %}
