@@ -106,6 +106,13 @@ class CustomPasswordResetForm(PasswordResetForm):
         ),
     )
 
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        user = get_user_model()
+        if not user.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is not registered.")
+        return email
+
 
 class CustomSetPasswordForm(SetPasswordForm):
     new_password1 = forms.CharField(
