@@ -78,7 +78,7 @@ class UserProfileTestCase(TestCase):
         self.assertEqual(response.context_data['default_image'], settings.DEFAULT_USER_IMAGE)
 
     def test_profile_context_cart(self):
-        Cart.objects.create(user=self.user, product_id=1, quantity=2)
+        Cart.objects.create(user=self.user, product_id=self.product.pk, quantity=2)
         self.client.login(username=self.user.username, password=self.password)
         response = self.client.get(self.path)
         cart_qs = response.context_data['cart']
@@ -98,7 +98,11 @@ class UserProfileTestCase(TestCase):
         self.assertTemplateUsed(response, 'users/profile.html')
 
 
-@override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend')
+@override_settings(
+    CELERY_TASK_ALWAYS_EAGER=True,
+    CELERY_TASK_EAGER_PROPAGATES=True,
+    EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend'
+)
 class PasswordResetTestCase(TestCase):
     def setUp(self):
         self.path = reverse('users:password_reset')
