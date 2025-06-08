@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1>Make order</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-7 j">
+    <h4 class="mt-3 mb-3">Make order</h4>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-danger">
+             {{ form.errors }}
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <label class="form-label small" for="{{ form.first_name.id_for_label }}">First Name</label>
+                {{ form.first_name }}
+            </div>
+            <div class="col-lg-6 mb-3">
+                <label class="form-label small" for="{{ form.last_name.id_for_label }}">Last Name</label>
+                {{ form.last_name }}
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label small" for="{{ form.image.id_for_label }}">Choose image</label>
+            {{ form.image }}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <label class="form-label small" for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="col-lg-6 mb-3">
+                <label class="form-label small" for="{{ form.email.id_for_label }}">Email address</label>
+                {{ form.email }}
+            </div>
+        </div>
+
+        <div class="d-grid mt-4">
+            <input class="btn btn-primary" type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
+        <div class="col-lg-5">
+            {% include 'products/cart.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}
