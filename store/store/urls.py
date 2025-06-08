@@ -28,6 +28,7 @@ urlpatterns = [
     path("", ProductHome.as_view(), name="home"),
     path("users/", include("users.urls", namespace="users")),
     path("auth/", include("social_django.urls", namespace="social")),
+    path("orders/", include("orders.urls", namespace="orders")),
 ]
 
 if settings.DEBUG:
