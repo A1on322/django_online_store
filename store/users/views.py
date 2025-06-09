@@ -42,7 +42,6 @@ class ProfileUserView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["cart"] = Cart.objects.filter(user=self.request.user)
         context["title"] = "Profile"
         context["default_image"] = settings.DEFAULT_USER_IMAGE
         return context
