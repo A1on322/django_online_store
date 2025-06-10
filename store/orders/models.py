@@ -37,5 +37,3 @@ class Order(models.Model):
         }
         cart.delete()
         self.save()
-
-

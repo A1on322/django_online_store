@@ -17,7 +17,6 @@ class OrderCreateForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address'}),
     )
 
-
     class Meta:
         model = Order
         fields = ['first_name', 'last_name', 'email', 'address',]
