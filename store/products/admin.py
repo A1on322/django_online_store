@@ -12,7 +12,7 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["name", "description", "quantity", "category", "post_image"]
-    fields = ["name", "description", "quantity", "category", "image"]
+    fields = ["name", "description", "quantity", "category", "stripe_product_price_id", "image"]
     list_filter = ["category__name"]
 
     @admin.display(description="Image", ordering="content")
