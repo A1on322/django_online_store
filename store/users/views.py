@@ -6,7 +6,6 @@ from django.contrib.auth.views import (LoginView, PasswordResetConfirmView,
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
-from products.models import Cart
 from users.forms import (CustomPasswordResetForm, CustomSetPasswordForm,
                          LoginUserForm, ProfileUserForm, RegisterUserForm)
 
