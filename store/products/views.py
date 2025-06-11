@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, TemplateView
 from products.models import Cart, Product
@@ -19,12 +20,17 @@ class ProductsView(DataMixxin, ListView):
     title_page = "Products"
 
     def get_queryset(self):
-        queryset = super().get_queryset()
         cat_id = self.kwargs.get("cat_id")
-        if cat_id:
-            queryset = queryset.filter(category__id=cat_id)
-        else:
+        cache_key = f'products_{cat_id}'
+
+        queryset = cache.get(cache_key)
+
+        if queryset is None:
             queryset = Product.objects.all()
+            if cat_id:
+                queryset = queryset.filter(category__id=cat_id)
+            cache.set(cache_key, queryset, 30)
+
         return queryset
 
     def get_context_data(self, **kwargs):
