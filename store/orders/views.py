@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 
 from django.urls import reverse_lazy, reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, ListView, DetailView
 from django.conf import settings
 from orders.forms import OrderCreateForm
 from orders.models import Order
@@ -24,6 +24,27 @@ class SuccessTemplateView(TemplateView):
 
 class CancelTemplateView(TemplateView):
     template_name = ''
+
+
+class OrderListView(ListView):
+    template_name = 'orders/all_orders.html'
+    extra_context = {'title': 'Order List'}
+    context_object_name = 'orders'
+    ordering = '-created'
+
+    def get_queryset(self):
+        return Order.objects.filter(user=self.request.user)
+
+
+class OrderDetailView(DetailView):
+    template_name = 'orders/order.html'
+    context_object_name = 'order'
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Order #{self.object.id}'
+        return context
 
 
 class OrderCreateView(CreateView):
