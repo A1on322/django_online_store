@@ -81,7 +81,7 @@ class UserProfileTestCase(TestCase):
         Cart.objects.create(user=self.user, product_id=self.product.pk, quantity=2)
         self.client.login(username=self.user.username, password=self.password)
         response = self.client.get(self.path)
-        cart_qs = response.context_data['cart']
+        cart_qs = response.context['cart']
 
         self.assertTrue(cart_qs.exists())
         self.assertEqual(cart_qs.first().user, self.user)
