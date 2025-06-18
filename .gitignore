@@ -179,7 +179,10 @@ store/.idea/
 .DS_Store
 
 
-#lint configuration
+# lint configuration
 pyproject.toml
 store/Makefile
 .flake8
+
+# collected static
+store/staticfiles
