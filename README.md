@@ -83,9 +83,9 @@ via Google / GitHub OAuth.
 
 8. Generate Stripe Price IDs for all existing products
     ```sh
-    docker compose exec store-backend \
-    python manage.py shell_plus -c \
-    "[p.save() for p in Product.objects.all()]"
+    docker compose exec store-backend python manage.py shell_plus
+   
+    [p.save() for p in Product.objects.all()]
     ```
 9. Open your browser and navigate to `http://127.0.0.1`
 ---
