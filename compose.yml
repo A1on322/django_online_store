@@ -1,0 +1,63 @@
+services:
+
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    depends_on:
+      - db
+
+  store-backend:
+    build: .
+    container_name: store-backend
+    volumes:
+      - ./store/static:/app/store/static
+      - ./store/staticfiles:/app/store/staticfiles
+      - ./store/media:/app/store/media
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    expose:
+      - "8000"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./store/staticfiles:/app/store/staticfiles
+      - ./store/media:/app/store/media
+    depends_on:
+      - store-backend
+
+  celery:
+    build: .
+    container_name: celery-worker
+    command: celery -A store worker -l info
+    volumes:
+      - ./store/staticfiles:/app/store/staticfiles
+      - ./store/media:/app/store/media
+    env_file:
+      - .env
+    depends_on:
+      - store-backend
+      - redis
+
+volumes:
+  postgres_data:
