@@ -63,7 +63,7 @@ via Google / GitHub OAuth.
 4. Log in to Stripe CLI and forward webhooks; copy the printed whsec_… secret:
     ```sh
     stripe login
-    stripe listen --forward-to localhost:8000/stripe/webhook/
+    stripe listen --forward-to localhost:8000/webhook/stripe/
     ```
 
 5. Paste the webhook secret into .env (STRIPE_ENDPOINT_SECRET=whsec_xxx):
