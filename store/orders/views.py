@@ -30,10 +30,9 @@ class OrderListView(ListView):
     template_name = 'orders/all_orders.html'
     extra_context = {'title': 'Order List'}
     context_object_name = 'orders'
-    ordering = '-created'
 
     def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+        return Order.objects.filter(user=self.request.user).order_by('-created_at')
 
 
 class OrderDetailView(DetailView):
