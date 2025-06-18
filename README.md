@@ -13,11 +13,8 @@ via Google / GitHub OAuth.
 - [Technologies](#technologies)
 - [Features](#features)
 - [Getting started](#getting-started)
-- [Тестирование](#тестирование)
-- [Deploy и CI/CD](#deploy-и-ci/cd)
-- [Contributing](#contributing)
-- [To do](#to-do)
-- [Команда проекта](#команда-проекта)
+- [Testing](#testing)
+
 
 ---
 ## Technologies
@@ -91,4 +88,22 @@ via Google / GitHub OAuth.
     "[p.save() for p in Product.objects.all()]"
     ```
 9. Open your browser and navigate to `http://127.0.0.1`
+---
+
+## Testing
+
+- to run tests execute:
+    ```sh
+    docker compose exec store-backend python manage.py test
+    ```
+- to lint:
+    ```sh
+    docker compose exec store-backend flake8
+    ```
+- to enter shell_plus:
+    ```sh
+    docker compose exec store-backend python manage.py shell_plus
+    ```
+
+
 
