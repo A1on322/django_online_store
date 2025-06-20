@@ -5,7 +5,7 @@
 E-commerce pet-project built with modern Django deployment stack. Users can browse a product catalogue with 
 category filters, add items to a shopping-cart, complete checkout (Stripe), and edit their profile 
 (name, avatar, password, e-mail). Sign-in is flexible: classic username + password, e-mail + password, or social login 
-via Google / GitHub OAuth.
+via Google / GitHub OAuth
 
 ---
 
